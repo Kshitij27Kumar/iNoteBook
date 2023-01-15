@@ -5,7 +5,7 @@ const NoteState = (props) => {
   const host = 'http://localhost:5000'
   const notesInitial = []
   const [notes, setNotes] = useState(notesInitial)
-
+  const [userName, setUserName] = useState('')
   // Get all Notes
   const getNotes = async () => {
     // API Call
@@ -17,7 +17,8 @@ const NoteState = (props) => {
       },
     })
     const json = await response.json()
-    setNotes(json)
+    setNotes(json.notes)
+    setUserName(json.userName)
   }
 
   // Add a Note
@@ -84,7 +85,7 @@ const NoteState = (props) => {
 
   return (
     <NoteContext.Provider
-      value={{ notes, addNote, deleteNote, editNote, getNotes }}
+      value={{ notes, addNote, deleteNote, editNote, getNotes, userName }}
     >
       {props.children}
     </NoteContext.Provider>

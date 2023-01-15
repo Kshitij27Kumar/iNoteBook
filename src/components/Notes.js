@@ -14,7 +14,6 @@ const Notes = (props) => {
     } else {
       history.push('/login')
     }
-    //getNotes()
     // eslint-disable-next-line
   }, [])
   const ref = useRef(null)

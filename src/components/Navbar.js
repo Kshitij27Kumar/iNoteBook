@@ -1,7 +1,10 @@
 import React from 'react'
+import { useContext } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
-
+import noteContext from '../context/notes/noteContext'
 const Navbar = () => {
+  const context = useContext(noteContext)
+  const { userName } = context
   let history = useHistory()
   const handleLogout = () => {
     localStorage.removeItem('auth-token')

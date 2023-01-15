@@ -3,7 +3,7 @@ import noteContext from '../context/notes/noteContext'
 
 const AddNote = (props) => {
   const context = useContext(noteContext)
-  const { addNote } = context
+  const { addNote, userName } = context
 
   const [note, setNote] = useState({ title: '', description: '', tag: '' })
 
@@ -19,7 +19,8 @@ const AddNote = (props) => {
   }
   return (
     <div className='container my-3'>
-      <h2>Add a Note</h2>
+      <h2>Welcome, {userName}!</h2>
+      <h2> Add a Note</h2>
       <form className='my-3'>
         <div className='mb-3'>
           <label htmlFor='title' className='form-label'>
