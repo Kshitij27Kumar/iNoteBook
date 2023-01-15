@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-const Signup = () => {
+const Signup = (props) => {
   const [credentials, setCredentials] = useState({
     name: '',
     email: '',
@@ -26,10 +26,11 @@ const Signup = () => {
     console.log(json)
     if (json.success) {
       // Save the auth token and redirect
-      localStorage.setItem('token', json.authtoken)
+      localStorage.setItem('auth-token', json.authtoken)
+      props.showAlert('Account Created Successfully', 'success')
       history.push('/')
     } else {
-      alert('Invalid credentials')
+      props.showAlert('Invalid Credentials', 'danger')
     }
   }
 
@@ -38,7 +39,8 @@ const Signup = () => {
   }
 
   return (
-    <div className='container'>
+    <div className='container mt-2'>
+      <h2 className='my-3'>Create an account to use iNotebook</h2>
       <form onSubmit={handleSubmit}>
         <div className='mb-3'>
           <label htmlFor='exampleInputEmail1' className='form-label'>
